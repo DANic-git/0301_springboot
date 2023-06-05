@@ -3,7 +3,7 @@ services:
     image: app
     build: .
     environment:
-      - JDBC_URL=jdbc:postgresql://db:5432/db?user=app&password=pass
+      - JDBC_URL=jdbc:postgresql://host.docker.internal:5432/db?user=app&password=pass
     ports:
       - '8080:8080'
     restart: unless-stopped
