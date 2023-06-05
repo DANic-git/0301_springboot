@@ -4,7 +4,11 @@ ENV JDBC_URL=jdbc:postgresql://host.docker.internal:5432/db?user=app&password=pa
 ENV HOME=/usr/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
-ADD . $HOME
+COPY pom.xml pom.xml
+COPY mvnw mvnw
+COPY .mvn .mvn
+RUN --mount=type=cache,target=/root/.m2 ./mvnw -ntp -B -pl . -am dependency:go-offline
+COPY src src
 RUN --mount=type=cache,target=/root/.m2 ./mvnw verify
 
 
