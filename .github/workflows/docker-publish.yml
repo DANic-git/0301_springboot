@@ -38,8 +38,8 @@ jobs:
       - name: Start db
         run: docker compose -f "docker-compose.db.yml" up -d --force-recreate
 
-      - name: Check host-gateway
-        run: dig +short host-gateway
+      - name: Check docker network
+        run: docker network ls
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
