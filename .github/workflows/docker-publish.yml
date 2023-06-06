@@ -35,8 +35,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Start containers
+      - name: Start db
         run: docker compose -f "docker-compose.db.yml" up -d --force-recreate
+
+      - name: Check host-gateway
+        run: dig +short host-gateway
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
