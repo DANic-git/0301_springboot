@@ -39,7 +39,7 @@ jobs:
         run: docker compose -f "docker-compose.db.yml" up -d --force-recreate
 
       - name: Check docker network
-        run: docker network ls
+        run: docker network inspect 0301_springboot_default
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
