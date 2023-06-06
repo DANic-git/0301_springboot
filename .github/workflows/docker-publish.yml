@@ -38,8 +38,8 @@ jobs:
       - name: Start db
         run: docker compose -f "docker-compose.db.yml" up -d --force-recreate
 
-      - name: Check docker network
-        run: docker network inspect 0301_springboot_default
+      - name: ip a
+        run: ip a
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -83,7 +83,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          add-hosts: host.docker.internal:host-gateway
+          add-hosts: host.docker.internal:127.0.0.1
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
